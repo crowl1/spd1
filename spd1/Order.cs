@@ -8,5 +8,7 @@ namespace spd1
 {
     class Order
     {
+        public string Name;
+        public int TimeLeft;
     }
 }
