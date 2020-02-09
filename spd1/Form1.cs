@@ -14,6 +14,7 @@ namespace spd1
     {
         public Form1()
         {
+            MessageBox.Show("ddsd");
             InitializeComponent();
         }
     }
