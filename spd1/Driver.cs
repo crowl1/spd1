@@ -8,5 +8,7 @@ namespace spd1
 {
     class Driver
     {
+        public string Name;
+        public string TimeLeft;
     }
 }

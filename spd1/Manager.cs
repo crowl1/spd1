@@ -8,5 +8,7 @@ namespace spd1
 {
     class Manager
     {
+        public string Name;
+        public string TimeLeft;
     }
 }

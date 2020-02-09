@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace spd1
 {
-    class Goods
+    class Storage
     {
         public string Name;
-        public int Time;
+        public int Distance;
     }
 }
