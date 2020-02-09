@@ -9,6 +9,6 @@ namespace spd1
     class Goods
     {
         public string Name;
-        public int Time;
+        public long Time;
     }
 }
