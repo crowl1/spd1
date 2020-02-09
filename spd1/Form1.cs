@@ -60,6 +60,20 @@ namespace spd1
 
 
             order.order(textBox_name.Text, distance, time);
+            dataGridView1.Rows.Clear();
+            dataGridView1.RowCount = Main.orders.Count;
+            dataGridView1.ColumnCount = 2;
+
+
+            //наповнення таблиці
+            for (int i = 0; i < Main.orders.Count ; i++)
+            {
+                for (int j = 0; j < 1; j++)
+                {
+                    dataGridView1.Rows[i].Cells[0].Value = Main.orders[i].Name;
+                    dataGridView1.Rows[i].Cells[1].Value = Convert.ToString(DateTimeOffset.FromUnixTimeSeconds(Main.orders[i].TimeLeft));
+                }
+            }
         }
     }
 }

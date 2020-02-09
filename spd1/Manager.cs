@@ -21,18 +21,24 @@ namespace spd1
 
         public void filling_list_managers()
         {
-            Main.managers.Add(new Manager { Name = "First", TimeLeft = DateTimeOffset.UtcNow.ToUnixTimeSeconds() });
-            Main.managers.Add(new Manager { Name = "Second", TimeLeft = DateTimeOffset.UtcNow.ToUnixTimeSeconds() });
+            Main.managers.Add(new Manager { Name = "First", TimeLeft = DateTimeOffset.UtcNow.ToUnixTimeSeconds(), Time =  500 });
+            Main.managers.Add(new Manager { Name = "Second", TimeLeft = DateTimeOffset.UtcNow.ToUnixTimeSeconds(), Time = 200 });
         }
 
         public Tuple<string, long, long> availability_check_drivers()
         {
-            foreach (Manager m in Main.managers) //наповнюється список
+            manager_time.Clear();
+
+
+            foreach (Manager m in Main.managers) //наповнюється додатковий список, який потрібен для знаходження min значення
             {
                 manager_time.Add(m.TimeLeft);
             }
 
-            long time_left = manager_time.Where(x => x % 2 == 0).Min(); //знаходиться найменше значення
+
+            long time_left = manager_time.Min(); //знаходиться найменше значення
+
+            int a = manager_time.Count;
 
             foreach (Manager m in Main.managers) //знаходиться ім'я
             {
@@ -40,11 +46,22 @@ namespace spd1
                 {
                     name = m.Name;
                     time = m.Time;
+
+                    //додаємо час виконання
+                    if (m.TimeLeft > DateTimeOffset.UtcNow.ToUnixTimeSeconds())
+                    {
+                        m.TimeLeft = m.TimeLeft + m.Time;
+                    }
+                    else
+                    {
+                        m.TimeLeft = DateTimeOffset.UtcNow.ToUnixTimeSeconds() + m.Time;
+                    }
                 }
             }
 
             return Tuple.Create(name, time_left, time); //вертається 3 значення - ім'я та час, що залишився та час виконання
 
         }
+    }
 
 }

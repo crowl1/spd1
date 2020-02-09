@@ -21,18 +21,18 @@ namespace spd1
 
         public void filling_list_drivers()
         {
-            Main.drivers.Add(new Driver { Name = "First", TimeLeft = DateTimeOffset.UtcNow.ToUnixTimeSeconds() });
-            Main.drivers.Add(new Driver { Name = "Second", TimeLeft = DateTimeOffset.UtcNow.ToUnixTimeSeconds() });
+            Main.drivers.Add(new Driver { Name = "First", TimeLeft = DateTimeOffset.UtcNow.ToUnixTimeSeconds(), Time = 212 });
+            Main.drivers.Add(new Driver { Name = "Second", TimeLeft = DateTimeOffset.UtcNow.ToUnixTimeSeconds(), Time = 324 });
         }
 
         public Tuple<string, long, long> availability_check_drivers()
         {
-            foreach (Driver d in Main.drivers) //наповнюється список
+            foreach (Driver d in Main.drivers) //наповнюється додатковий список, який потрібен для знаходження min значення
             {
                 drivers_time.Add(d.TimeLeft);
             }
 
-            long time_left = drivers_time.Where(x => x % 2 == 0).Min(); //знаходиться найменше значення
+            long time_left = drivers_time.Min(); //знаходиться найменше значення
 
             foreach (Driver d in Main.drivers) //знаходиться ім'я
             {
@@ -40,6 +40,17 @@ namespace spd1
                 {
                     name = d.Name;
                     time = d.Time;
+
+                    //додаємо час виконання
+                    if (d.TimeLeft > DateTimeOffset.UtcNow.ToUnixTimeSeconds())
+                    {
+                        d.TimeLeft = d.TimeLeft + d.Time;
+                    }
+                    else
+                    {
+                        d.TimeLeft = DateTimeOffset.UtcNow.ToUnixTimeSeconds() + d.Time;
+                    }
+                     
                 }
             }
 

@@ -27,6 +27,21 @@ namespace spd1
             long time_driver = driver_info.Item3;
 
 
+            //розрахунок часу
+            if (time_left_manager < DateTimeOffset.UtcNow.ToUnixTimeSeconds())
+            {
+                time_left_manager = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            }
+            if (time_left_driver < DateTimeOffset.UtcNow.ToUnixTimeSeconds())
+            {
+                time_left_driver = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            }
+
+            long time_left = DateTimeOffset.UtcNow.ToUnixTimeSeconds() + (time_left_driver - DateTimeOffset.UtcNow.ToUnixTimeSeconds() + time_driver) + (time_left_manager - DateTimeOffset.UtcNow.ToUnixTimeSeconds() + time_manager) + time_goods + distance / 60;
+
+            Main.orders.Add(new Order { Name = name, TimeLeft = time_left });
+            
+
         }
     }
 }
