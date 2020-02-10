@@ -11,7 +11,6 @@ namespace spd1
         public string Name;
         public int Distance;
 
-        private Main main = new Main();
 
         public void filling_list_storages()
         {

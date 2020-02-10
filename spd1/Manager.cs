@@ -25,7 +25,7 @@ namespace spd1
             Main.managers.Add(new Manager { Name = "Second", TimeLeft = DateTimeOffset.UtcNow.ToUnixTimeSeconds(), Time = 200 });
         }
 
-        public Tuple<string, long, long> availability_check_drivers()
+        public Tuple<string, long, long> availability_check_managers()
         {
             manager_time.Clear();
 

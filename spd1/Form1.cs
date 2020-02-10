@@ -12,7 +12,6 @@ namespace spd1
 {
     public partial class Form1 : Form
     {
-        Main main = new Main();
         Storage storage = new Storage();
         Order order = new Order();
         Goods goods = new Goods();

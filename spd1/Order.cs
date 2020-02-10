@@ -16,13 +16,13 @@ namespace spd1
 
         public void order(string name, int distance, long time_goods)
         {
-            var manager_info = manager.availability_check_drivers();
-            string name_manager = manager_info.Item1;
+            var manager_info = manager.availability_check_managers();
+            //string name_manager = manager_info.Item1;
             long time_left_manager = manager_info.Item2;
             long time_manager = manager_info.Item3;
 
             var driver_info = driver.availability_check_drivers();
-            string name_driver = driver_info.Item1;
+            //string name_driver = driver_info.Item1;
             long time_left_driver = driver_info.Item2;
             long time_driver = driver_info.Item3;
 
