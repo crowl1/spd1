@@ -8,7 +8,12 @@ namespace spd1
 {
     class Storage
     {
-        public string Name;
-        public int Distance;
+        public string Name { get; }
+        public int Distance { get; }
+        public Storage(string Name, int Distance)
+        {
+            this.Name = Name;
+            this.Distance = Distance;
+        }
     }
 }

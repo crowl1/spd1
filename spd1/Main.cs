@@ -8,11 +8,11 @@ namespace spd1
 {
     class  Main
     {
-        public static List<Storage> storages = new List<Storage>();
-        public static List<Order> orders = new List<Order>();
-        public static List<Goods> goodss = new List<Goods>();
-        public static List<Manager> managers = new List<Manager>();
-        public static List<Driver> drivers = new List<Driver>();
+        public List<Storage> storages = new List<Storage>();
+        public List<Order> orders = new List<Order>();
+        public List<Goods> goodss = new List<Goods>();
+        public List<Manager> managers = new List<Manager>();
+        public List<Driver> drivers = new List<Driver>();
 
         string name_driver;
         long time_driver;
@@ -25,7 +25,7 @@ namespace spd1
 
         List<long> manager_time = new List<long>();
 
-
+        //Main main = new Main();
 
         public void filling_list_drivers()
         {
@@ -35,11 +35,11 @@ namespace spd1
 
         public void filling_list_storages()
         {
-            storages.Add(new Storage { Name = "ATB", Distance = 10 });
-            storages.Add(new Storage { Name = "Fora", Distance = 20 });
-            storages.Add(new Storage { Name = "Furshet", Distance = 32 });
-            storages.Add(new Storage { Name = "EcoMarket", Distance = 8 });
-            storages.Add(new Storage { Name = "Novus", Distance = 40 });
+            storages.Add(new Storage ("ATB", 10 ));
+            storages.Add(new Storage ("Fora", 20 ));
+            storages.Add(new Storage ( "Furshet", 32 ));
+            storages.Add(new Storage ( "EcoMarket", 8 ));
+            storages.Add(new Storage ( "Novus", 40 ));
         }
 
         public void filling_list_managers()
@@ -57,14 +57,14 @@ namespace spd1
 
         public Tuple<string, long, long> availability_check_drivers()
         {
-            foreach (Driver d in Main.drivers) //наповнюється додатковий список, який потрібен для знаходження min значення
+            foreach (Driver d in drivers) //наповнюється додатковий список, який потрібен для знаходження min значення
             {
                 drivers_time.Add(d.TimeLeft);
             }
 
             long time_left = drivers_time.Min(); //знаходиться найменше значення
 
-            foreach (Driver d in Main.drivers) //знаходиться ім'я
+            foreach (Driver d in drivers) //знаходиться ім'я
             {
                 if (time_left == d.TimeLeft)
                 {
@@ -120,7 +120,7 @@ namespace spd1
             manager_time.Clear();
 
 
-            foreach (Manager m in Main.managers) //наповнюється додатковий список, який потрібен для знаходження min значення
+            foreach (Manager m in managers) //наповнюється додатковий список, який потрібен для знаходження min значення
             {
                 manager_time.Add(m.TimeLeft);
             }
@@ -130,7 +130,7 @@ namespace spd1
 
             int a = manager_time.Count;
 
-            foreach (Manager m in Main.managers) //знаходиться ім'я
+            foreach (Manager m in managers) //знаходиться ім'я
             {
                 if (time_left == m.TimeLeft)
                 {

@@ -25,11 +25,11 @@ namespace spd1
             main.filling_list_managers();
             main.filling_list_drivers();
 
-            foreach (Storage s in Main.storages)
+            foreach (Storage s in main.storages)
             {
                 comboBox_storage.Items.Add(s.Name);
             }
-            foreach (Goods g in Main.goodss)
+            foreach (Goods g in main.goodss)
             {
                 comboBox_goods.Items.Add(g.Name);
             }
@@ -37,7 +37,7 @@ namespace spd1
 
         private void button_order_Click(object sender, EventArgs e)
         {
-            foreach (Storage s in Main.storages)
+            foreach (Storage s in main.storages)
             {
                 if (comboBox_storage.Text == s.Name)
                 {
@@ -46,7 +46,7 @@ namespace spd1
             }
 
 
-            foreach (Goods g in Main.goodss)
+            foreach (Goods g in main.goodss)
             {
                 if (comboBox_goods.Text == g.Name)
                 {
@@ -57,17 +57,17 @@ namespace spd1
 
             main.order(textBox_name.Text, distance, time);
             dataGridView1.Rows.Clear();
-            dataGridView1.RowCount = Main.orders.Count;
+            dataGridView1.RowCount = main.orders.Count;
             dataGridView1.ColumnCount = 2;
 
 
             //наповнення таблиці
-            for (int i = 0; i < Main.orders.Count ; i++)
+            for (int i = 0; i < main.orders.Count ; i++)
             {
                 for (int j = 0; j < 1; j++)
                 {
-                    dataGridView1.Rows[i].Cells[0].Value = Main.orders[i].Name;
-                    dataGridView1.Rows[i].Cells[1].Value = Convert.ToString(DateTimeOffset.FromUnixTimeSeconds(Main.orders[i].TimeLeft));
+                    dataGridView1.Rows[i].Cells[0].Value = main.orders[i].Name;
+                    dataGridView1.Rows[i].Cells[1].Value = Convert.ToString(DateTimeOffset.FromUnixTimeSeconds(main.orders[i].TimeLeft));
                 }
             }
         }
