@@ -13,11 +13,7 @@ namespace spd1
     public partial class Form1 : Form
     {
         Main main = new Main();
-        Storage storage = new Storage();
-        Order order = new Order();
-        Goods goods = new Goods();
-        Manager manager = new Manager();
-        Driver driver = new Driver();
+
         int distance;
         long time;
 
@@ -28,12 +24,7 @@ namespace spd1
             main.filling_list_goodss();
             main.filling_list_managers();
             main.filling_list_drivers();
-            /*
-            storage.filling_list_storages();
-            goods.filling_list_goodss();
-            manager.filling_list_managers();
-            driver.filling_list_drivers();
-            */
+
             foreach (Storage s in Main.storages)
             {
                 comboBox_storage.Items.Add(s.Name);
@@ -64,7 +55,6 @@ namespace spd1
             }
 
 
-            //order.order(textBox_name.Text, distance, time);
             main.order(textBox_name.Text, distance, time);
             dataGridView1.Rows.Clear();
             dataGridView1.RowCount = Main.orders.Count;
