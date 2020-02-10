@@ -11,9 +11,9 @@ namespace spd1
         public string Name;
         public long TimeLeft;
         public long Time;
-
-        string name;
-        long time;
+        /*
+        string name_driver;
+        long time_driver;
 
 
         List<long> drivers_time = new List<long>();
@@ -38,8 +38,8 @@ namespace spd1
             {
                 if (time_left == d.TimeLeft)
                 {
-                    name = d.Name;
-                    time = d.Time;
+                    name_driver = d.Name;
+                    time_driver = d.Time;
 
                     //додаємо час виконання
                     if (d.TimeLeft > DateTimeOffset.UtcNow.ToUnixTimeSeconds())
@@ -54,7 +54,8 @@ namespace spd1
                 }
             }
 
-            return Tuple.Create(name, time_left, time); //вертається 3 значення - ім'я та час, що залишився та час виконання
+            return Tuple.Create(name_driver, time_left, time_driver); //вертається 3 значення - ім'я та час, що залишився та час виконання
         }
+        */
     }
 }

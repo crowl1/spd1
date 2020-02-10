@@ -11,6 +11,7 @@ namespace spd1
         public string Name;
         public long TimeLeft;
 
+        /*
         Driver driver = new Driver();
         Manager manager = new Manager();
 
@@ -43,5 +44,6 @@ namespace spd1
             
 
         }
+        */
     }
 }

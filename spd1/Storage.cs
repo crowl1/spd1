@@ -10,7 +10,7 @@ namespace spd1
     {
         public string Name;
         public int Distance;
-
+        /*
 
         public void filling_list_storages()
         {
@@ -20,6 +20,6 @@ namespace spd1
             Main.storages.Add(new Storage { Name = "EcoMarket", Distance = 8 });
             Main.storages.Add(new Storage { Name = "Novus", Distance = 40 });
         }
-
+        */
     }
 }

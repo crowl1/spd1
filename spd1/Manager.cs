@@ -12,8 +12,9 @@ namespace spd1
         public long TimeLeft;
         public long Time;
 
-        string name;
-        long time;
+        /*
+        string name_manager;
+        long time_manager;
 
 
         List<long> manager_time = new List<long>();
@@ -44,8 +45,8 @@ namespace spd1
             {
                 if (time_left == m.TimeLeft)
                 {
-                    name = m.Name;
-                    time = m.Time;
+                    name_manager = m.Name;
+                    time_manager = m.Time;
 
                     //додаємо час виконання
                     if (m.TimeLeft > DateTimeOffset.UtcNow.ToUnixTimeSeconds())
@@ -59,9 +60,10 @@ namespace spd1
                 }
             }
 
-            return Tuple.Create(name, time_left, time); //вертається 3 значення - ім'я та час, що залишився та час виконання
+            return Tuple.Create(name_manager, time_left, time_manager); //вертається 3 значення - ім'я та час, що залишився та час виконання
 
         }
+        */
     }
 
 }
