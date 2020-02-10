@@ -8,7 +8,13 @@ namespace spd1
 {
     class Goods
     {
-        public string Name;
-        public long Time;
+        public string Name { get; }
+        public long Time { get; }
+
+        public Goods(string Name, long Time)
+        {
+            this.Name = Name;
+            this.Time = Time;
+        }
     }
 }

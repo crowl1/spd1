@@ -29,8 +29,8 @@ namespace spd1
 
         public void filling_list_drivers()
         {
-            drivers.Add(new Driver { Name = "First", TimeLeft = DateTimeOffset.UtcNow.ToUnixTimeSeconds(), Time = 212 });
-            drivers.Add(new Driver { Name = "Second", TimeLeft = DateTimeOffset.UtcNow.ToUnixTimeSeconds(), Time = 324 });
+            drivers.Add(new Driver ( "First", DateTimeOffset.UtcNow.ToUnixTimeSeconds(), 212 ));
+            drivers.Add(new Driver ("Second", DateTimeOffset.UtcNow.ToUnixTimeSeconds(), 324 ));
         }
 
         public void filling_list_storages()
@@ -44,14 +44,14 @@ namespace spd1
 
         public void filling_list_managers()
         {
-            managers.Add(new Manager { Name = "First", TimeLeft = DateTimeOffset.UtcNow.ToUnixTimeSeconds(), Time = 500 });
-            managers.Add(new Manager { Name = "Second", TimeLeft = DateTimeOffset.UtcNow.ToUnixTimeSeconds(), Time = 200 });
+            managers.Add(new Manager ( "First", DateTimeOffset.UtcNow.ToUnixTimeSeconds(), 500 ));
+            managers.Add(new Manager ( "Second", DateTimeOffset.UtcNow.ToUnixTimeSeconds(), 200 ));
         }
 
         public void filling_list_goodss()
         {
-            goodss.Add(new Goods { Name = "Milk", Time = 5 });
-            goodss.Add(new Goods { Name = "Bread", Time = 15 });
+            goodss.Add(new Goods ( "Milk", 5 ));
+            goodss.Add(new Goods ( "Bread", 15 ));
         }
 
 
@@ -112,7 +112,7 @@ namespace spd1
 
             long time_left = DateTimeOffset.UtcNow.ToUnixTimeSeconds() + (time_left_driver - DateTimeOffset.UtcNow.ToUnixTimeSeconds() + time_driver) + (time_left_manager - DateTimeOffset.UtcNow.ToUnixTimeSeconds() + time_manager) + time_goods + distance / 60;
 
-            orders.Add(new Order { Name = name, TimeLeft = time_left });
+            orders.Add(new Order ( name,  time_left ));
         }
 
         public Tuple<string, long, long> availability_check_managers()

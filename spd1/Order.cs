@@ -8,7 +8,13 @@ namespace spd1
 {
     class Order
     {
-        public string Name;
-        public long TimeLeft;
+        public string Name { get; }
+        public long TimeLeft { get; }
+
+        public Order (string Name, long TimeLeft)
+        {
+            this.Name = Name;
+            this.TimeLeft = TimeLeft;
+        }
     }
 }

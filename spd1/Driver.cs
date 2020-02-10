@@ -8,8 +8,15 @@ namespace spd1
 {
     class Driver
     {
-        public string Name;
-        public long TimeLeft;
-        public long Time;
+        public string Name { get; set; }
+        public long TimeLeft { get; set; }
+        public long Time { get; set; }
+
+        public Driver(string Name, long TimeLeft, long Time)
+        {
+            this.Name = Name;
+            this.TimeLeft = TimeLeft;
+            this.Time = Time;
+        }
     }
 }
