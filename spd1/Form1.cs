@@ -12,7 +12,7 @@ namespace spd1
 {
     public partial class Form1 : Form
     {
-        Main main = new Main();
+        Delivery main = new Delivery();
 
         int distance;
         long time;

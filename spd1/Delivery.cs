@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace spd1
 {
-    class  Main
+    class  Delivery
     {
         public List<Storage> storages = new List<Storage>();
         public List<Order> orders = new List<Order>();
@@ -86,33 +86,7 @@ namespace spd1
             return Tuple.Create(name_driver, time_left, time_driver); //вертається 3 значення - ім'я та час, що залишився та час виконання
         }
 
-        public void order(string name, int distance, long time_goods)
-        {
-            var manager_info = availability_check_managers();
-            //string name_manager = manager_info.Item1;
-            long time_left_manager = manager_info.Item2;
-            long time_manager = manager_info.Item3;
 
-            var driver_info = availability_check_drivers();
-            //string name_driver = driver_info.Item1;
-            long time_left_driver = driver_info.Item2;
-            long time_driver = driver_info.Item3;
-
-
-            //розрахунок часу
-            if (time_left_manager < DateTimeOffset.UtcNow.ToUnixTimeSeconds())
-            {
-                time_left_manager = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-            }
-            if (time_left_driver < DateTimeOffset.UtcNow.ToUnixTimeSeconds())
-            {
-                time_left_driver = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-            }
-
-            long time_left = DateTimeOffset.UtcNow.ToUnixTimeSeconds() + (time_left_driver - DateTimeOffset.UtcNow.ToUnixTimeSeconds() + time_driver) + (time_left_manager - DateTimeOffset.UtcNow.ToUnixTimeSeconds() + time_manager) + time_goods + distance / 60;
-
-            orders.Add(new Order ( name,  time_left ));
-        }
 
         private Tuple<string, long, long> availability_check_managers()
         {
@@ -150,6 +124,34 @@ namespace spd1
 
             return Tuple.Create(name_manager, time_left, time_manager); //вертається 3 значення - ім'я та час, що залишився та час виконання
 
+        }
+
+        public void order(string name, int distance, long time_goods)
+        {
+            var manager_info = availability_check_managers();
+            //string name_manager = manager_info.Item1;
+            long time_left_manager = manager_info.Item2;
+            long time_manager = manager_info.Item3;
+
+            var driver_info = availability_check_drivers();
+
+            long time_left_driver = driver_info.Item2;
+            long time_driver = driver_info.Item3;
+
+
+            //розрахунок часу
+            if (time_left_manager < DateTimeOffset.UtcNow.ToUnixTimeSeconds())
+            {
+                time_left_manager = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            }
+            if (time_left_driver < DateTimeOffset.UtcNow.ToUnixTimeSeconds())
+            {
+                time_left_driver = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            }
+
+            long time_left = DateTimeOffset.UtcNow.ToUnixTimeSeconds() + (time_left_driver - DateTimeOffset.UtcNow.ToUnixTimeSeconds() + time_driver) + (time_left_manager - DateTimeOffset.UtcNow.ToUnixTimeSeconds() + time_manager) + time_goods + distance / 60;
+
+            orders.Add(new Order(name, time_left));
         }
     }
 }
