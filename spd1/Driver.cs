@@ -10,7 +10,23 @@ namespace spd1
     {
         public string Name { get; set; }
         public long TimeLeft { get; set; }
-        public long Time { get; set; }
+        long time;
+
+        public long Time
+        {
+            get { return time; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value));
+                }
+                else
+                {
+                    time = value;
+                }
+            }
+        }
 
         public Driver(string Name, long TimeLeft, long Time)
         {

@@ -25,7 +25,6 @@ namespace spd1
 
         List<long> manager_time = new List<long>();
 
-        //Main main = new Main();
 
         public void filling_list_drivers()
         {
@@ -55,7 +54,7 @@ namespace spd1
         }
 
 
-        public Tuple<string, long, long> availability_check_drivers()
+        private Tuple<string, long, long> availability_check_drivers()
         {
             foreach (Driver d in drivers) //наповнюється додатковий список, який потрібен для знаходження min значення
             {
@@ -115,7 +114,7 @@ namespace spd1
             orders.Add(new Order ( name,  time_left ));
         }
 
-        public Tuple<string, long, long> availability_check_managers()
+        private Tuple<string, long, long> availability_check_managers()
         {
             manager_time.Clear();
 
