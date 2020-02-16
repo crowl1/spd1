@@ -33,7 +33,7 @@ namespace spd1
         {
             this.Name = Name;
             this.TimeLeft = TimeLeft;
-            this.Time = Time;
+            time = Time;
         }
     }
 }
