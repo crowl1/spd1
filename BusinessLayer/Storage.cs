@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace spd1
+namespace BusinessLayer
 {
-    class Storage
+    public class Storage
     {
         public string Name { get; }
         public int Distance { get;}

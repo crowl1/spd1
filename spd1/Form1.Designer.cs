@@ -1,4 +1,4 @@
-﻿namespace spd1
+﻿namespace PresentationLayer
 {
     partial class Form1
     {

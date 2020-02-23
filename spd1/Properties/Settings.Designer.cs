@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace spd1.Properties
+namespace PresentationLayer.Properties
 {
 
 

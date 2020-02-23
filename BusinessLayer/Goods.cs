@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace spd1
+namespace BusinessLayer
 {
-    class Goods
+    public class Goods
     {
         public string Name { get; }
         public long Time { get; }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace spd1
+namespace BusinessLayer
 {
-    class Manager
+    public class Driver
     {
         public string Name { get; set; }
         public long TimeLeft { get; set; }
@@ -28,8 +28,7 @@ namespace spd1
             }
         }
 
-
-        public Manager(string Name, long TimeLeft, long Time)
+        public Driver(string Name, long TimeLeft, long Time)
         {
             this.Name = Name;
             this.TimeLeft = TimeLeft;

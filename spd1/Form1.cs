@@ -7,12 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BusinessLayer;
 
-namespace spd1
+namespace PresentationLayer
 {
     public partial class Form1 : Form
     {
-        Delivery main = new Delivery();
+        BusinessLayer.Program main = new BusinessLayer.Program();
+    
+
 
         int distance;
         long time;
@@ -20,16 +23,13 @@ namespace spd1
         public Form1()
         {
             InitializeComponent();
-            main.filling_list_storages();
-            main.filling_list_goodss();
-            main.filling_list_managers();
-            main.filling_list_drivers();
+            main.filling_list();
 
-            foreach (Storage s in main.storages)
+            foreach (BusinessLayer.Storage s in main.storages)
             {
                 comboBox_storage.Items.Add(s.Name);
             }
-            foreach (Goods g in main.goodss)
+            foreach (BusinessLayer.Goods g in main.goodss)
             {
                 comboBox_goods.Items.Add(g.Name);
             }
@@ -37,7 +37,7 @@ namespace spd1
 
         private void button_order_Click(object sender, EventArgs e)
         {
-            foreach (Storage s in main.storages)
+            foreach (BusinessLayer.Storage s in main.storages)
             {
                 if (comboBox_storage.Text == s.Name)
                 {
@@ -46,7 +46,7 @@ namespace spd1
             }
 
 
-            foreach (Goods g in main.goodss)
+            foreach (BusinessLayer.Goods g in main.goodss)
             {
                 if (comboBox_goods.Text == g.Name)
                 {
