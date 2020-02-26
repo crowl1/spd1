@@ -85,5 +85,11 @@
       <Name>BusinessLayer</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\drivers.txt" />
+    <Content Include="Data\goodss.txt" />
+    <Content Include="Data\managers.txt" />
+    <Content Include="Data\storages.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
