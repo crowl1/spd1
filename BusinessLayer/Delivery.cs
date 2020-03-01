@@ -15,7 +15,7 @@ namespace BusinessLayer
         void filling_list();
         void order(string name, int distance, long time_goods);
     }
-    public class Program : IDelivery
+    public class Delivery : IDelivery
     {
         public List<Storage> storages { get; set; } = new List<Storage>();
         public List<Order> orders { get; set; } = new List<Order>();
@@ -23,14 +23,14 @@ namespace BusinessLayer
         List<Manager> managers = new List<Manager>();
         List<Driver> drivers = new List<Driver>();
 
-        public DataAccessLayer.Program DALayer = new DataAccessLayer.Program();
+        public DataAccessLayer.Data DALayer = new DataAccessLayer.Data();
 
         static void Main()
         {
 
         }
 
-        public Program()
+        public Delivery()
         {
 
         }

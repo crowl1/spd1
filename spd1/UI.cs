@@ -13,7 +13,7 @@ namespace PresentationLayer
 {
     public partial class Form1 : Form
     {
-        BusinessLayer.IDelivery main = new BusinessLayer.Program();
+        BusinessLayer.IDelivery main = new BusinessLayer.Delivery();
     
 
 

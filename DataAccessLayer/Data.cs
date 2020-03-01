@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    public class Program
+    public class Data
     {
         public List<List<string>> drivers_data = new List<List<string>>();
         public List<List<string>> managers_data = new List<List<string>>();
