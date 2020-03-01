@@ -7,11 +7,19 @@ using DataAccessLayer;
 
 namespace BusinessLayer
 {
-    public class Program
+    public interface IDelivery
     {
-        public List<Storage> storages = new List<Storage>();
-        public List<Order> orders = new List<Order>();
-        public List<Goods> goodss = new List<Goods>();
+        List<Storage> storages { get; set; }
+        List<Order> orders { get; set; }
+        List<Goods> goodss { get; set; }
+        void filling_list();
+        void order(string name, int distance, long time_goods);
+    }
+    public class Program : IDelivery
+    {
+        public List<Storage> storages { get; set; } = new List<Storage>();
+        public List<Order> orders { get; set; } = new List<Order>();
+        public List<Goods> goodss { get; set; } = new List<Goods>();
         List<Manager> managers = new List<Manager>();
         List<Driver> drivers = new List<Driver>();
 

@@ -26,7 +26,7 @@ namespace DataAccessLayer
             for (int k = 0; k < lines.Length; k++)
             {
                 string[] bit = lines[k].Split('_');
-                drivers_data.Add(new List<string>() { bit[0], Convert.ToString(DateTimeOffset.UtcNow.ToUnixTimeSeconds()), bit[1] });
+                drivers_data.Add(new List<string>() { bit[0], Convert.ToString(DateTimeOffset.UtcNow.ToUnixTimeSeconds()), bit[1] }); //додаємо дані в список
             }
         }
 
