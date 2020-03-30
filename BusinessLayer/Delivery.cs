@@ -15,6 +15,12 @@ namespace BusinessLayer
         void filling_list();
         void order(string name, int distance, long time_goods);
     }
+
+    class Containers
+    {
+        public static DataAccessLayer.IData main { get; set; } = new DataAccessLayer.Data();
+    }
+
     public class Delivery : IDelivery
     {
         public List<Storage> storages { get; set; } = new List<Storage>();
@@ -22,8 +28,6 @@ namespace BusinessLayer
         public List<Goods> goodss { get; set; } = new List<Goods>();
         List<Manager> managers = new List<Manager>();
         List<Driver> drivers = new List<Driver>();
-
-        public DataAccessLayer.Data DALayer = new DataAccessLayer.Data();
 
         static void Main()
         {
@@ -37,26 +41,27 @@ namespace BusinessLayer
 
         public void filling_list()
         {
-            DALayer.filling_list_drivers();
-            DALayer.filling_list_managers();
-            DALayer.filling_list_goodss();
-            DALayer.filling_list_storages();
-            for (byte a = 0; a < DALayer.drivers_data.Count; a++)
+            //Containers.main.Dir();
+            Containers.main.filling_list_drivers();
+            Containers.main.filling_list_managers();
+            Containers.main.filling_list_goodss();
+            Containers.main.filling_list_storages();
+            for (byte a = 0; a < Containers.main.drivers_data.Count; a++)
             {
-                var k = DALayer.drivers_data[a].Count;
-                drivers.Add(new Driver(DALayer.drivers_data[a][0], Convert.ToInt64(DALayer.drivers_data[a][1]), Convert.ToInt64(DALayer.drivers_data[a][2])));
+                var k = Containers.main.drivers_data[a].Count;
+                drivers.Add(new Driver(Containers.main.drivers_data[a][0], Convert.ToInt64(Containers.main.drivers_data[a][1]), Convert.ToInt64(Containers.main.drivers_data[a][2])));
             }
-            for (byte b = 0; b < DALayer.managers_data.Count; b++)
+            for (byte b = 0; b < Containers.main.managers_data.Count; b++)
             {
-                managers.Add(new Manager(DALayer.managers_data[b][0], Convert.ToInt64(DALayer.managers_data[b][1]), Convert.ToInt64(DALayer.managers_data[b][2])));
+                managers.Add(new Manager(Containers.main.managers_data[b][0], Convert.ToInt64(Containers.main.managers_data[b][1]), Convert.ToInt64(Containers.main.managers_data[b][2])));
             }
-            for (byte c = 0; c < DALayer.goodss_data.Count; c++)
+            for (byte c = 0; c < Containers.main.goodss_data.Count; c++)
             {
-                goodss.Add(new Goods(DALayer.goodss_data[c][0], Convert.ToInt64(DALayer.goodss_data[c][1])));
+                goodss.Add(new Goods(Containers.main.goodss_data[c][0], Convert.ToInt64(Containers.main.goodss_data[c][1])));
             }
-            for (byte d = 0; d < DALayer.storages_data.Count; d++)
+            for (byte d = 0; d < Containers.main.storages_data.Count; d++)
             {
-                storages.Add(new Storage(DALayer.storages_data[d][0], Convert.ToInt32(DALayer.storages_data[d][1])));
+                storages.Add(new Storage(Containers.main.storages_data[d][0], Convert.ToInt32(Containers.main.storages_data[d][1])));
             }
         }
 

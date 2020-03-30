@@ -11,25 +11,23 @@ using BusinessLayer;
 
 namespace PresentationLayer
 {
+
+
     public partial class Form1 : Form
     {
-        BusinessLayer.IDelivery main = new BusinessLayer.Delivery();
-    
-
-
         int distance;
         long time;
 
         public Form1()
         {
             InitializeComponent();
-            main.filling_list();
+            Containers.main.filling_list();
 
-            foreach (BusinessLayer.Storage s in main.storages)
+            foreach (BusinessLayer.Storage s in Containers.main.storages)
             {
                 comboBox_storage.Items.Add(s.Name);
             }
-            foreach (BusinessLayer.Goods g in main.goodss)
+            foreach (BusinessLayer.Goods g in Containers.main.goodss)
             {
                 comboBox_goods.Items.Add(g.Name);
             }
@@ -37,7 +35,7 @@ namespace PresentationLayer
 
         private void button_order_Click(object sender, EventArgs e)
         {
-            foreach (BusinessLayer.Storage s in main.storages)
+            foreach (BusinessLayer.Storage s in Containers.main.storages)
             {
                 if (comboBox_storage.Text == s.Name)
                 {
@@ -46,7 +44,7 @@ namespace PresentationLayer
             }
 
 
-            foreach (BusinessLayer.Goods g in main.goodss)
+            foreach (BusinessLayer.Goods g in Containers.main.goodss)
             {
                 if (comboBox_goods.Text == g.Name)
                 {
@@ -55,21 +53,25 @@ namespace PresentationLayer
             }
 
 
-            main.order(textBox_name.Text, distance, time);
+            Containers.main.order(textBox_name.Text, distance, time);
             dataGridView1.Rows.Clear();
-            dataGridView1.RowCount = main.orders.Count;
+            dataGridView1.RowCount = Containers.main.orders.Count;
             dataGridView1.ColumnCount = 2;
 
 
             //наповнення таблиці
-            for (int i = 0; i < main.orders.Count ; i++)
+            for (int i = 0; i < Containers.main.orders.Count ; i++)
             {
                 for (int j = 0; j < 1; j++)
                 {
-                    dataGridView1.Rows[i].Cells[0].Value = main.orders[i].Name;
-                    dataGridView1.Rows[i].Cells[1].Value = Convert.ToString(DateTimeOffset.FromUnixTimeSeconds(main.orders[i].TimeLeft));
+                    dataGridView1.Rows[i].Cells[0].Value = Containers.main.orders[i].Name;
+                    dataGridView1.Rows[i].Cells[1].Value = Convert.ToString(DateTimeOffset.FromUnixTimeSeconds(Containers.main.orders[i].TimeLeft));
                 }
             }
         }
+    }
+    class Containers
+    {
+        public static BusinessLayer.IDelivery main { get; set; } = new BusinessLayer.Delivery();
     }
 }
